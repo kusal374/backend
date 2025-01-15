@@ -1,10 +1,10 @@
-import { supabase } from './backend.js';
+import { supabase } from './backend.js'; // Import supabase configuration
 
 document.addEventListener('DOMContentLoaded', () => {
     const signupForm = document.getElementById('signup-form');
 
     signupForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault();  // Prevent form from reloading page
         
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
@@ -25,19 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // Store additional user details
             const { data, insertError } = await supabase
                 .from('users')
-                .insert([
-                    { 
-                        id: user.id, 
-                        email: email, 
-                        role: role 
-                    }
-                ]);
+                .insert([{
+                    id: user.id,
+                    email: email,
+                    role: role
+                }]);
 
             if (insertError) {
                 console.error('Error storing user details:', insertError);
             }
 
-            // Redirect to profile setup
+            // Redirect to profile setup page
             window.location.href = 'profile.html';
         } catch (err) {
             console.error('Signup error:', err);
