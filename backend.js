@@ -1,11 +1,14 @@
-import dotenv from 'dotenv'; // Import dotenv using ES module syntax
-dotenv.config(); // Load environment variables
+import dotenv from 'dotenv'; // Import dotenv
+dotenv.config(); // Load the environment variables from .env file
 
 import { createClient } from '@supabase/supabase-js';
 
-// Fetch environment variables
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_KEY;
+
+if (!SUPABASE_URL || !SUPABASE_KEY) {
+  throw new Error('Supabase URL or Key is missing.');
+}
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
