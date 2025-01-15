@@ -9,5 +9,5 @@
     "@supabase/supabase-js": "^2.0.0",
     "dotenv": "^16.0.0"
   },
-  "type": "module"  // This tells Node.js to treat files as ES modules
+  "type": "module"
 }
