@@ -1,7 +1,6 @@
 {
   "name": "railway-deploy-app",
   "version": "1.0.0",
-  "description": "A simple app for Railway deployment.",
   "main": "backend.js",
   "scripts": {
     "start": "node backend.js"
@@ -10,9 +9,5 @@
     "@supabase/supabase-js": "^2.0.0",
     "dotenv": "^16.0.0"
   },
-  "engines": {
-    "node": ">=16"
-  },
-  "author": "",
-  "license": "MIT"
+  "type": "module"  // This tells Node.js to treat files as ES modules
 }
