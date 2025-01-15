@@ -10,12 +10,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
         const role = document.getElementById('role').value;
 
+        // Log form data for debugging
+        console.log('Email:', email);
+        console.log('Password:', password);
+        console.log('Role:', role);
+
         try {
             // Sign up user
             const { user, error } = await supabase.auth.signUp({
                 email: email,
                 password: password
             });
+
+            // Log for debugging
+            console.log('User:', user);
+            console.log('Error:', error);
 
             if (error) {
                 alert(error.message);
@@ -30,6 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     email: email,
                     role: role
                 }]);
+
+            // Log for debugging
+            console.log('Inserted Data:', data);
+            console.log('Insert Error:', insertError);
 
             if (insertError) {
                 console.error('Error storing user details:', insertError);
