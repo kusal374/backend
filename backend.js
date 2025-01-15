@@ -1,7 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
+require('dotenv').config(); // Make sure to load environment variables
 
-const SUPABASE_URL = 'https://exgyekfwnztnaawaueuu.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV4Z3lla2Z3bnp0bmFhd2F1ZXV1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY5MzYzNDksImV4cCI6MjA1MjUxMjM0OX0.XecyfG2CsjzhVySSo7YfaTAEDBYRGmlAuKnl6KAX_YU';
+// Fetch environment variables
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_KEY = process.env.SUPABASE_KEY;
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -22,7 +24,7 @@ export const logout = async () => {
 };
 
 // Database Functions
-export const fetchUser Data = async (userId) => {
+export const fetchUserData = async (userId) => {
     const { data, error } = await supabase
         .from('users')
         .select('*')
@@ -30,7 +32,7 @@ export const fetchUser Data = async (userId) => {
     return { data, error };
 };
 
-export const updateUser Data = async (userId, updates) => {
+export const updateUserData = async (userId, updates) => {
     const { data, error } = await supabase
         .from('users')
         .update(updates)
