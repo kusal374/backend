@@ -7,10 +7,13 @@ const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_KEY) {
-  throw new Error('Supabase URL or Key is missing.');
+    throw new Error('Supabase URL or Key is missing.');
 }
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// Export the Supabase client for use in frontend
+export { supabase };
 
 // Authentication Functions
 export const login = async (email, password) => {
